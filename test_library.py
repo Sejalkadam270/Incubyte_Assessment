@@ -15,3 +15,12 @@ def test_borrow_unavailable_book():
     library.borrow_book("978-3-16-148410-0")
     with pytest.raises(Exception):
         library.borrow_book("978-3-16-148410-0")
+
+def test_return_book():
+    library = Library()
+    book = Book("978-3-16-148410-0", "The Great Gatsby", "F. Scott Fitzgerald", 1925)
+    library.add_book(book)
+    library.borrow_book("978-3-16-148410-0")
+    library.return_book("978-3-16-148410-0")
+    assert book.is_available == True
+
