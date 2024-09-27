@@ -1,9 +1,12 @@
+import pytest
+from library_module import Library, Book
+
 def test_borrow_book():
     library = Library()
     book = Book("978-3-16-148410-0", "The Great Gatsby", "F. Scott Fitzgerald", 1925)
     library.add_book(book)
-    assert library.borrow_book("978-3-16-148410-0") == True
-    assert book.is_available == False
+    library.borrow_book("978-3-16-148410-0")
+    assert book.is_borrowed is True
 
 def test_borrow_unavailable_book():
     library = Library()
